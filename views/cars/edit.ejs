@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add a Car</title>
+  </head>
+  <body>
+    <h1>Create a New Car!</h1>
+    <a href="/cars/">Back to Cars</a>
+    <form action="/cars/<%=car._id%>?method=PUT" method="POST">
+        <!--Make-->
+        <label for="make">Manufacturer:</label>
+        <input type="text" name="make" id="make" value="<%= car.make%>"/>
+        <!--Model-->
+        <label for="model">Model:</label>
+        <input type="text" name="model" id="model" value="<%=car.model%>" />
+        <!--Year-->
+        <label for="year">Year:</label>
+        <input type="number" name="year" id="year" value="<%= car.year %>"/>
+        <!--Color-->
+        <label for="color">Color:</label>
+        <input type="text" name="color" id="color" value="<%= car.color %>"/>
+        <!--Transmission-->
+        <label for="transmission">Transmission:</label>
+        <input type="text" name="transmission" id="transmission" value="<%=car.transmission%>"/>
+        <!--Fuel Type-->
+        <label for="fuelType">Fuel Type:</label>
+        <input type="text" name="fuelType" id="fuelType" value="<%=car.fuelType%>"/>
+        <!--Is it Cool?-->
+        <label for="isCool">Check the box if it is a cool car:</label>
+        <input type="checkbox" name="isCool" id="isCool" <% if(car.isCool) {%>checked<% } %> > 
+  
+        <button type="submit">Add Car</button>
+    </form>
+  </body>
+</html>

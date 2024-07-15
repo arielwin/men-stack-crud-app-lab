@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= car.name %></title>
+  </head>
+  <body>
+    <h1><%= car.year+' '+car.make+' '+car.model %></h1>
+    <a href="/cars/">Back to Cars</a>
+    <% if (car.isCool) { %>
+      <p>This car is very cool!</p>
+    <% } else { %>
+      <p>This car isn't cool!</p>
+    <% } %>
+
+    <ul>
+        <li>Make: <%=car.make%></li>
+        <li>Model: <%=car.model%></li>
+        <li>Year: <%=car.year%></li>
+        <li>Transmission: <%=car.transmission%></li>
+        <li>Most Common Color: <%=car.color%></li>
+        <li>Fuel Type: <%=car.fuelType%></li>
+        <li>It is <%=car.isCool%> that this car is objectively cool.</li>
+
+    </ul>
+    <form action="/cars/<%=car._id%>?_method=DELETE" method="POST">
+        <button type="submit">Delete <%= car.year+' '+car.make+' '+car.model %></button>
+      </form>
+      <a href="/cars/<%= car._id %>/edit">Edit <%= car.year+' '+car.make+' '+car.model %></a>
+      <a href="/car">Back to Cars</a>
+  </body>
+</html>
