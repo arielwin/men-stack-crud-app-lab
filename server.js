@@ -16,11 +16,12 @@ mongoose.connection.on('connected', () => {
     console.log(`Connected to MongoDB ${mongoose.connection.name}`)
 })
 
-
+// index
 app.get('/', async (req, res) => {
     res.render('index.ejs')
 })
 
+// new
 app.get('/cars/new', (req, res) => {
     res.render('./cars/new.ejs')
 })
@@ -45,10 +46,6 @@ app.get('/cars/:carId', async (req,res) => {
     res.render('cars/show.ejs', {car: foundCar})
 })
 
-app.delete('/cars/:carId', async (req, res) => {
-    await Car.findByIdAndDelete(req.params.carId)
-    res.redirect('/cars')
-})
 
 app.get('/cars/:carId/edit', async (req, res) => {
     const foundCar = await Car.findById(req.params.carId)
@@ -56,6 +53,12 @@ app.get('/cars/:carId/edit', async (req, res) => {
         car: foundCar
     })
 } )
+
+app.delete('/cars/:carId', async (req, res) => {
+    await Car.findByIdAndDelete(req.params.carId)
+    res.redirect('/cars')
+})
+
 
 app.listen(3000, () => {
     console.log('Listening on port 3000')
